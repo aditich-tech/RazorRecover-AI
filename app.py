@@ -463,7 +463,7 @@ def api_toggle_rule(rule_id):
         VALUES (?, 'RULE_UPDATE', 'ADMIN', 'RULE_CONFIG_CHANGED', ?, 0.0, 'Merchant Admin')
     """, (now_str, f"Rule {rule['rule_name']} ({rule_id}) set to {'ACTIVE' if new_state else 'INACTIVE'}."))
     
-    return jsonify({"success": True, "rule_id": rule_id, "is_active": new_state})
+    return jsonify({"success": True, "rule_id": rule_id, "rule_name": rule["rule_name"], "is_active": new_state})
 
 @app.route("/api/rules", methods=["POST"])
 def api_create_rule():

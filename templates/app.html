@@ -618,6 +618,52 @@
     </div>
   </div>
 
+  <!-- ==================== RULE ACTION / RECOMMENDATION DIALOG MODAL ==================== -->
+  <div class="modal-overlay" id="rule-action-dialog">
+    <div class="modal-content" style="max-width: 450px; padding: 28px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-lg); text-align: center;">
+      <!-- Close button top right -->
+      <div style="display: flex; justify-content: flex-end; margin-top: -8px; margin-right: -8px;">
+        <button class="btn btn-secondary btn-sm" id="btn-close-rule-dialog" style="padding: 4px 8px; font-size: 13px; border: none; background: transparent; color: #98a2b3; cursor: pointer;">✕</button>
+      </div>
+
+      <!-- Icon Container -->
+      <div id="rule-dialog-icon-wrap" style="width: 52px; height: 52px; border-radius: 50%; background: #ecfdf3; color: #027a48; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+        <svg id="rule-dialog-icon-applied" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <svg id="rule-dialog-icon-off" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b54708" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+      </div>
+
+      <!-- Title & State Badge -->
+      <h3 id="rule-dialog-title" style="font-family: var(--font-heading); font-size: 19px; font-weight: 700; color: var(--text-main); margin-bottom: 8px;">
+        Recommendation Applied
+      </h3>
+
+      <div style="margin-bottom: 14px;">
+        <span id="rule-dialog-badge" class="badge badge-success">RULE ACTIVE</span>
+      </div>
+
+      <!-- Message -->
+      <p id="rule-dialog-message" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.55; margin-bottom: 24px;">
+        Rule RULE-01 has been applied and activated in the recovery engine.
+      </p>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; gap: 12px; justify-content: center;">
+        <button type="button" class="btn btn-secondary" id="btn-rule-dialog-dismiss" style="flex: 1; padding: 10px;">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" id="btn-rule-dialog-view-rules" style="flex: 1; padding: 10px;">
+          View Rules →
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- JavaScript Modules -->
   <script src="/static/js/api.js"></script>
   <script src="/static/js/auth.js"></script>
