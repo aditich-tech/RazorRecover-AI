@@ -2,6 +2,8 @@
  * RazorRecover AI - Recovery Rules Controller
  */
 const RecoveryRules = {
+  rules: [],
+
   init() {
     this.loadRules();
     this.setupCreateModal();
@@ -14,6 +16,7 @@ const RecoveryRules = {
     try {
       const data = await API.get('/api/rules');
       if (!data || !data.rules) return;
+      this.rules = data.rules;
 
       container.innerHTML = data.rules.map(rule => `
         <div class="card" style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
@@ -40,7 +43,7 @@ const RecoveryRules = {
               <input type="checkbox" ${rule.is_active ? 'checked' : ''} onchange="RecoveryRules.toggleRule('${rule.rule_id}')">
               <span class="toggle-slider"></span>
             </label>
-            <button class="btn btn-secondary btn-sm" onclick="alert('Rule Details:\\n' + JSON.stringify(${JSON.stringify(rule)}, null, 2))">
+            <button class="btn btn-secondary btn-sm" onclick="RecoveryRules.showRuleInfo('${rule.rule_id}')">
               Info
             </button>
           </div>
@@ -48,6 +51,13 @@ const RecoveryRules = {
       `).join('');
     } catch (err) {
       container.innerHTML = '<div style="color: #ef4444;">Failed to load rules.</div>';
+    }
+  },
+
+  showRuleInfo(ruleId) {
+    const rule = (this.rules || []).find(r => r.rule_id === ruleId);
+    if (rule) {
+      alert('Rule Details:\n' + JSON.stringify(rule, null, 2));
     }
   },
 
