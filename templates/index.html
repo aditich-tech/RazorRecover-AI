@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RazorRecover AI — Autonomous Revenue Recovery Agent</title>
+  <meta name="description"
+    content="AI Revenue Recovery Agent for merchants: detect payment failures, choose bounded interventions, and salvage lost revenue. Built for Razorpay Buildathon.">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <header
+    style="padding: 16px 48px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); background: #ffffff; position: sticky; top: 0; z-index: 100;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div class="brand-logo">R</div>
+      <div class="brand-text">
+        <span class="brand-name">RazorRecover AI</span>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <div class="demo-badge-banner">
+        <span class="demo-badge-dot"></span>
+        <span>Demo environment · Synthetic transaction dataset</span>
+      </div>
+      <a href="/login" class="btn btn-secondary btn-sm">Log in</a>
+      <a href="/login" class="btn btn-primary btn-sm">Register</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main style="padding: 72px 24px 60px; max-width: 1100px; margin: 0 auto; text-align: center;">
+    <div class="badge badge-info" style="margin-bottom: 20px; padding: 6px 14px; font-size: 12px;">
+      Next-Gen Razorpay Payment Recovery Protocol
+    </div>
+
+    <h1
+      style="font-family: var(--font-heading); font-size: 50px; font-weight: 800; line-height: 1.15; color: var(--text-main); letter-spacing: -1px; margin-bottom: 20px;">
+      Recover revenue that slips <br>
+      <span style="color: var(--razorpay-blue);">
+        through the cracks.
+      </span>
+    </h1>
+
+    <p style="font-size: 18px; color: var(--text-muted); max-width: 760px; margin: 0 auto 36px; line-height: 1.6;">
+      RazorRecover AI detects payment failures, identifies revenue at risk, chooses the appropriate recovery
+      intervention, executes bounded recovery workflows, and measures recovered revenue.
+    </p>
+
+    <!-- CTAs -->
+    <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 56px;">
+      <a href="/login" class="btn btn-primary btn-lg" style="font-size: 15px; padding: 14px 32px;">
+        Get Started
+      </a>
+    </div>
+
+    <!-- Product Workflow Visual Preview -->
+    <div class="card"
+      style="background: #ffffff; border: 1px solid var(--border-subtle); padding: 32px; text-align: left; box-shadow: var(--shadow-sm);">
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border-subtle);">
+        <div>
+          <h2 style="font-size: 18px; font-weight: 700; color: var(--text-main);">Autonomous Recovery Workflow Architecture</h2>
+          <p style="font-size: 12.5px; color: var(--text-dim);">Powered by a realistic 10,000+ transaction dataset and
+            explainable heuristics.</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+        <div
+          style="background: #f8fafc; padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="color: var(--danger); font-weight: 700; font-size: 13px; margin-bottom: 6px;">01. Detect Risk</div>
+          <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Continuously scans failed payments, gateway timeouts, and UPI
+            drops from the transaction stream.</p>
+        </div>
+
+        <div
+          style="background: #f8fafc; padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="color: var(--razorpay-blue); font-weight: 700; font-size: 13px; margin-bottom: 6px;">02. AI Scoring</div>
+          <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Calculates explainable recovery probability based on customer
+            lifetime reliability and failure reasons.</p>
+        </div>
+
+        <div
+          style="background: #f8fafc; padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="color: var(--warning); font-weight: 700; font-size: 13px; margin-bottom: 6px;">03. Merchant Approval
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Transparent review of action breakdown before executing any
+            simulated recovery actions.</p>
+        </div>
+
+        <div
+          style="background: #f8fafc; padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="color: var(--success); font-weight: 700; font-size: 13px; margin-bottom: 6px;">04. Bounded Workflow</div>
+          <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Enforces stopping rules (max retries, min probability) and logs
+            every single event to the audit trail.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- How It Works Modal -->
+  <div class="modal-overlay" id="how-it-works-modal">
+    <div class="modal-content" style="max-width: 680px; padding: 32px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-family: var(--font-heading); font-size: 20px; color: var(--text-main);">How RazorRecover AI Works</h3>
+        <button class="btn btn-secondary btn-sm" id="btn-close-how-modal">✕</button>
+      </div>
+
+      <div
+        style="display: flex; flex-direction: column; gap: 16px; font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
+        <p>
+          <strong>1. 10,000+ Synthetic Merchant Dataset:</strong> A Supabase PostgreSQL database initializes
+          automatically with realistic customer histories across UPI, Cards, Net Banking, and Wallets.
+        </p>
+        <p>
+          <strong>2. Dynamic Calculations:</strong> All metrics—including Potential Loss, Recovered Revenue, and
+          Recovery Rate—are calculated live from the database via SQL queries.
+        </p>
+        <p>
+          <strong>3. Explainable AI Scoring:</strong> Diagnoses failure reasons and customer loyalty to assign high,
+          medium, or low recovery probabilities with human-readable rationale.
+        </p>
+        <p>
+          <strong>4. Stopping Rules & Guardrails:</strong> Halts recovery workflows after 3 attempts or when probability
+          is under 25% to protect customer experience.
+        </p>
+        <p>
+          <strong>5. Verified Audit Trail:</strong> Every single AI decision, merchant approval, and transaction update
+          is logged with exact timestamps.
+        </p>
+      </div>
+
+      <div style="margin-top: 24px; text-align: right;">
+        <a href="/login" class="btn btn-primary">Launch Merchant App →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer
+    style="padding: 24px 48px; border-top: 1px solid var(--border-subtle); background: #ffffff; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-dim);">
+    <div>RazorRecover AI · Built for Razorpay</div>
+    <div class="demo-badge-banner">
+      <span class="demo-badge-dot"></span>
+      <span>Demo environment · Synthetic transaction dataset</span>
+    </div>
+  </footer>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/landing.js"></script>
+</body>
+
+</html>

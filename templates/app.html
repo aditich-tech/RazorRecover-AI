@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — RazorRecover AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">R</div>
+        <div class="brand-text">
+          <span class="brand-name">RazorRecover AI</span>
+          <span class="brand-tag">Track 03 · AI Recovery</span>
+        </div>
+      </div>
+
+      <!-- Navigation (Strictly limited to 5 main items) -->
+      <nav class="sidebar-nav">
+        <div class="nav-item active" id="nav-dashboard" onclick="switchView('dashboard')">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </span>
+          <span>Dashboard</span>
+        </div>
+
+        <div class="nav-item" id="nav-customers" onclick="switchView('customers')">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </span>
+          <span>Customers</span>
+        </div>
+
+        <div class="nav-item" id="nav-rules" onclick="switchView('rules')">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </span>
+          <span>Recovery Rules</span>
+        </div>
+
+        <div class="nav-item" id="nav-history" onclick="switchView('history')">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          <span>Recovery History</span>
+        </div>
+
+        <div class="nav-item" id="nav-trends" onclick="switchView('trends')">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </span>
+          <span>Numbers & Trends</span>
+        </div>
+
+        <div class="nav-item" id="nav-insights" onclick="switchView('insights')">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"/>
+              <line x1="10" y1="22" x2="14" y2="22"/>
+            </svg>
+          </span>
+          <span>AI Insights</span>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer with Demo Badge, Profile, and Logout -->
+      <div class="sidebar-footer">
+        <div class="demo-badge-banner" style="font-size: 10px; padding: 4px 8px; justify-content: center;">
+          <span class="demo-badge-dot"></span>
+          <span>Demo environment · Synthetic dataset</span>
+        </div>
+
+        <div class="user-profile-badge">
+          <div class="user-avatar">M</div>
+          <div class="user-info">
+            <div class="user-name">{{ user.merchant_name if user else 'Razorpay Merchant' }}</div>
+            <div class="user-role">{{ user.email if user else 'merchant@razorpay.com' }}</div>
+          </div>
+        </div>
+
+        <button class="btn-logout" id="btn-logout" onclick="handleLogout()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          Log Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+    <div class="main-wrapper">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title" id="page-title-heading">Recovery Operations Dashboard</h1>
+        </div>
+
+        <div class="header-right">
+          <span class="badge badge-info" style="display: flex; align-items: center; gap: 6px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+            10,500 Transactions Indexed
+          </span>
+
+          <button class="btn btn-secondary btn-sm" id="btn-reseed-data" title="Reset dataset to initial state">
+            Reset Demo Data
+          </button>
+        </div>
+      </header>
+
+      <!-- ==================== VIEW 1: DASHBOARD ==================== -->
+      <section class="content-body" id="view-dashboard">
+
+        <!-- Prominent Risk Status Indicator & Start Recovery CTA Banner -->
+        <div class="risk-zone-card high" id="risk-zone-card">
+          <div class="risk-zone-content">
+            <div class="risk-tag-row">
+              <span class="risk-pulse-dot"></span>
+              <span class="risk-title" id="risk-zone-title">HIGH RECOVERY RISK</span>
+            </div>
+            <p class="risk-desc" id="risk-zone-desc">
+              Pending failed payments detected across UPI and Card rails. Immediate AI intervention recommended to avoid abandonment.
+            </p>
+          </div>
+
+          <!-- The Single Main CTA: # Start Recovery -->
+          <div>
+            <button class="btn-start-recovery" id="btn-start-recovery-main">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+              Start Recovery
+            </button>
+          </div>
+        </div>
+
+        <!-- 6 Financial Metric KPI Cards (Calculated directly from SQLite) -->
+        <div class="kpi-grid">
+          <div class="kpi-card accent-loss">
+            <span class="kpi-label">Total Potential Loss</span>
+            <div class="kpi-value" id="stat-potential-loss" style="color: #ef4444;">₹0</div>
+            <span class="kpi-sub">Unrecovered failed transactions</span>
+          </div>
+
+          <div class="kpi-card accent-recoverable">
+            <span class="kpi-label">Potentially Recoverable</span>
+            <div class="kpi-value" id="stat-potentially-recoverable" style="color: #38bdf8;">₹0</div>
+            <span class="kpi-sub">Estimated by AI scoring model</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Failed Attempts</span>
+            <div class="kpi-value" id="stat-failed-attempts">0</div>
+            <span class="kpi-sub">Total failed transactions</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Pending Recoveries</span>
+            <div class="kpi-value" id="stat-pending-recoveries" style="color: #f59e0b;">0</div>
+            <span class="kpi-sub">Awaiting merchant workflow</span>
+          </div>
+
+          <div class="kpi-card accent-recovered">
+            <span class="kpi-label">Revenue Already Recovered</span>
+            <div class="kpi-value" id="stat-recovered-revenue" style="color: #10b981;">₹0</div>
+            <span class="kpi-sub">Verified recovered payments</span>
+          </div>
+
+          <div class="kpi-card accent-rate">
+            <span class="kpi-label">Recovery Rate</span>
+            <div class="kpi-value" id="stat-recovery-rate" style="color: #a78bfa;">0.0%</div>
+            <span class="kpi-sub">Actual recovery efficiency</span>
+          </div>
+        </div>
+
+        <!-- Before / After Impact Card -->
+        <div class="impact-comparison-card">
+          <div class="impact-header">
+            <div>
+              <h2 class="impact-title">Before / After Financial Impact Transformation</h2>
+              <p style="font-size: 12.5px; color: #94a3b8;">
+                Real-time financial delta reflecting the outcome of AI recovery interventions.
+              </p>
+            </div>
+            <span class="badge badge-info">Live Ledger Comparison</span>
+          </div>
+
+          <div class="impact-grid">
+            <!-- Before Side -->
+            <div class="impact-side before">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="badge badge-danger">Before Recovery</span>
+                <span style="font-size: 11px; color: #94a3b8;">Initial State</span>
+              </div>
+              <div class="impact-metric-row">
+                <span style="color: #94a3b8;">Potential Loss:</span>
+                <span style="font-weight: 700; color: #ef4444;" id="impact-before-loss">₹0</span>
+              </div>
+              <div class="impact-metric-row">
+                <span style="color: #94a3b8;">Potentially Recoverable:</span>
+                <span style="font-weight: 700; color: #38bdf8;" id="impact-before-recoverable">₹0</span>
+              </div>
+              <div class="impact-metric-row">
+                <span style="color: #94a3b8;">Failed Payment Attempts:</span>
+                <span style="font-weight: 600; color: #cbd5e1;" id="impact-before-attempts">0</span>
+              </div>
+            </div>
+
+            <!-- Transformation Arrow -->
+            <div class="impact-arrow">→</div>
+
+            <!-- After Side -->
+            <div class="impact-side after">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="badge badge-success">After AI Intervention</span>
+                <span style="font-size: 11px; color: #10b981; font-weight: 600;">Measurable Recovery</span>
+              </div>
+              <div class="impact-metric-row">
+                <span style="color: #94a3b8;">Recovered Revenue:</span>
+                <span style="font-weight: 800; color: #10b981; font-size: 16px;" id="impact-after-recovered">₹0</span>
+              </div>
+              <div class="impact-metric-row">
+                <span style="color: #94a3b8;">Remaining Potential Loss:</span>
+                <span style="font-weight: 600; color: #cbd5e1;" id="impact-after-remaining">₹0</span>
+              </div>
+              <div class="impact-metric-row">
+                <span style="color: #94a3b8;">Cumulative Recovery Rate:</span>
+                <span style="font-weight: 700; color: #a78bfa;" id="impact-after-rate">0.0%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress Visual Bar -->
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 12px; color: #64748b; margin-bottom: 6px;">
+              <span>Recovery Progress Against Total Potential Loss</span>
+              <span>Bounded stopping rules enforced</span>
+            </div>
+            <div style="width: 100%; height: 10px; background: #eaecf0; border-radius: 5px; overflow: hidden;">
+              <div id="impact-progress-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #0052ff, #027a48); transition: width 0.6s ease;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Audit Trail Feed -->
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--text-main);">Live Recovery Audit Trail (Recent Activity)</h3>
+            <span style="font-size: 11px; color: #64748b;">Immutable Supabase Log Stream</span>
+          </div>
+          <div id="recent-audit-logs-list" style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="color: #64748b; font-size: 13px;">Loading audit logs...</div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==================== VIEW 2: CUSTOMERS ==================== -->
+      <section class="content-body" id="view-customers" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 20px;">
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: 20px; color: var(--text-main);">Customer Recovery Accounts</h2>
+            <p style="font-size: 13px; color: #64748b;">
+              Aggregated customer behavioral profiles. Default sorted by highest transaction volume.
+            </p>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px; width: 340px;">
+            <input type="text" class="form-control" id="customers-search-input" placeholder="Search by customer name or ID...">
+          </div>
+        </div>
+
+        <!-- Scalable Customers Table -->
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th class="sortable-customer sortable" data-sort="customer">Customer</th>
+                <th class="sortable-customer sortable" data-sort="total_transactions" style="text-align: center;">Total Txns ▾</th>
+                <th class="sortable-customer sortable" data-sort="successful" style="text-align: center;">Successful</th>
+                <th class="sortable-customer sortable" data-sort="failed" style="text-align: center;">Failed</th>
+                <th class="sortable-customer sortable" data-sort="recovered" style="text-align: center;">Recovered</th>
+                <th class="sortable-customer sortable" data-sort="pending" style="text-align: center;">Pending</th>
+                <th class="sortable-customer sortable" data-sort="abandoned" style="text-align: center;">Abandoned</th>
+                <th class="sortable-customer sortable" data-sort="amount" style="text-align: right;">Total Volume</th>
+              </tr>
+            </thead>
+            <tbody id="customers-table-body">
+              <!-- Rendered by customers.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 18px;">
+          <span style="font-size: 12px; color: #64748b;" id="customers-page-info">
+            Loading...
+          </span>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary btn-sm" id="btn-prev-customers">Previous</button>
+            <button class="btn btn-secondary btn-sm" id="btn-next-customers">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 3: RECOVERY RULES ==================== -->
+      <section class="content-body" id="view-rules" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: 20px; color: var(--text-main);">Recovery Rules & Guardrails</h2>
+            <p style="font-size: 13px; color: #64748b;">
+              Active rules directly govern the simulated workflow engine and stopping criteria.
+            </p>
+          </div>
+          <button class="btn btn-primary" id="btn-open-create-rule-modal">
+            + Create New Rule
+          </button>
+        </div>
+
+        <div id="rules-list-container">
+          <!-- Rendered by rules.js -->
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 3B: RECOVERY HISTORY ==================== -->
+      <section class="content-body" id="view-history" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 20px;">
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: 20px; color: var(--text-main);">Recovery History & Explainability</h2>
+            <p style="font-size: 13px; color: #94a3b8;">
+              Auditable log of automated AI decisions showing which transactions were retried, resolved, or skipped and why.
+            </p>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px; width: 340px;">
+            <input type="text" class="form-control" id="history-search-input" placeholder="Search by txn, customer, or reason...">
+          </div>
+        </div>
+
+        <!-- Summary KPIs (Total Actions | Recovered | Retried | Skipped) -->
+        <div class="kpi-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 24px;">
+          <div class="kpi-card">
+            <span class="kpi-label">Total Actions</span>
+            <div class="kpi-value" id="history-stat-total" style="color: #38bdf8;">0</div>
+            <span class="kpi-sub">Evaluated by AI rules</span>
+          </div>
+
+          <div class="kpi-card accent-recovered">
+            <span class="kpi-label">Recovered</span>
+            <div class="kpi-value" id="history-stat-recovered" style="color: #10b981;">0</div>
+            <span class="kpi-sub">Successfully resolved payments</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Retried</span>
+            <div class="kpi-value" id="history-stat-retried" style="color: #38bdf8;">0</div>
+            <span class="kpi-sub">Smart retries dispatched</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">Skipped</span>
+            <div class="kpi-value" id="history-stat-skipped" style="color: #f59e0b;">0</div>
+            <span class="kpi-sub">Halted by active guardrails</span>
+          </div>
+        </div>
+
+        <!-- Filters Bar (All | Retried | Resolved | Skipped | Recovered) -->
+        <div class="history-filters-bar" style="margin-bottom: 18px;">
+          <button class="history-filter-btn active" data-filter="all">All</button>
+          <button class="history-filter-btn" data-filter="retried">Retried</button>
+          <button class="history-filter-btn" data-filter="resolved">Resolved</button>
+          <button class="history-filter-btn" data-filter="skipped">Skipped</button>
+          <button class="history-filter-btn" data-filter="recovered">Recovered</button>
+        </div>
+
+        <!-- Recovery History Table -->
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Transaction ID</th>
+                <th>Customer</th>
+                <th>Amount</th>
+                <th>Failure Reason</th>
+                <th style="text-align: center;">Customer Success Rate</th>
+                <th>AI Action</th>
+                <th>Status</th>
+                <th>Timestamp</th>
+                <th style="text-align: center;">Why?</th>
+              </tr>
+            </thead>
+            <tbody id="history-table-body">
+              <!-- Rendered by recovery_history.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="table-pagination" style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+          <div id="history-page-info" style="font-size: 12.5px; color: #64748b;">Showing 0 of 0</div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary btn-sm" id="btn-prev-history">Previous</button>
+            <button class="btn btn-secondary btn-sm" id="btn-next-history">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 4: NUMBERS & TRENDS ==================== -->
+      <section class="content-body" id="view-trends" style="display: none;">
+        
+        <!-- Monthly Summary Banner -->
+        <div class="card" style="margin-bottom: 24px; background: #ffffff; border: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 12px; color: #64748b; text-transform: uppercase; font-weight: 600;">Monthly Recovered Revenue</div>
+            <div style="font-family: var(--font-heading); font-size: 32px; font-weight: 800; color: #027a48; margin: 4px 0;" id="analytics-this-month-recovered">
+              ₹0
+            </div>
+            <div style="font-size: 12px; color: #64748b;">Calculated live from database timestamps</div>
+          </div>
+          <div class="badge badge-success" id="analytics-growth-badge" style="font-size: 13px; padding: 8px 16px;">
+            +0% vs previous month
+          </div>
+        </div>
+
+        <!-- 4 Key Analytics KPIs -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Recovery Rate</span>
+            <div class="kpi-value" id="analytics-kpi-recovery-rate" style="color: var(--razorpay-blue);">0%</div>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Revenue Recovered</span>
+            <div class="kpi-value" id="analytics-kpi-recovered-rev" style="color: #027a48;">₹0</div>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Revenue Lost</span>
+            <div class="kpi-value" id="analytics-kpi-lost-rev" style="color: #b42318;">₹0</div>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Failed Payment Volume</span>
+            <div class="kpi-value" id="analytics-kpi-failed-vol">0</div>
+          </div>
+        </div>
+
+        <!-- Large Recovery Trend Graph -->
+        <div class="card" style="margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <div>
+              <h3 style="font-size: 15px; font-weight: 700; color: var(--text-main);">Recovery Progress Over Time (Weekly Revenue)</h3>
+              <p style="font-size: 12px; color: #64748b;">Green: Recovered Revenue · Red: Lost Revenue</p>
+            </div>
+          </div>
+          <canvas id="chart-trend-canvas" style="width: 100%; height: 240px;"></canvas>
+        </div>
+
+        <!-- Lower Grid: Breakdown Charts -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+          <div class="card">
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 14px;">Recovery by Payment Method</h3>
+            <div id="chart-method-list"></div>
+          </div>
+
+          <div class="card">
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 14px;">Recovery by Failure Reason</h3>
+            <div id="chart-reason-list"></div>
+          </div>
+
+          <div class="card">
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 8px;">Best-Performing Retry Time (Hourly Distribution)</h3>
+            <p style="font-size: 11.5px; color: #64748b; margin-bottom: 12px;">Amber indicates peak 1–3 PM PSP congestion slot</p>
+            <canvas id="chart-hour-canvas" style="width: 100%; height: 140px;"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 5: AI INSIGHTS ==================== -->
+      <section class="content-body" id="view-insights" style="display: none;">
+        <div style="margin-bottom: 24px;">
+          <h2 style="font-family: var(--font-heading); font-size: 20px; color: var(--text-main);">AI Revenue Recovery Analyst</h2>
+          <p style="font-size: 13px; color: #64748b;">
+            Machine learning insights computed directly from your merchant dataset with 1-click action triggers.
+          </p>
+        </div>
+
+        <div id="ai-insights-container">
+          <!-- Rendered by insights.js -->
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ==================== DEDICATED RECOVERY MODAL ==================== -->
+  <div class="modal-overlay" id="recovery-modal-overlay">
+    <div class="modal-content" style="max-width: 780px;">
+      <div id="recovery-modal-body">
+        <!-- Dynamically managed by recovery_modal.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CUSTOMER PROFILE DRAWER ==================== -->
+  <div class="drawer-overlay" id="customer-drawer-overlay">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 18px; color: var(--text-main);" id="customer-drawer-name">
+            Customer Profile
+          </h3>
+          <p style="font-size: 12px; color: #64748b;" id="customer-drawer-email">Loading...</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-close-customer-drawer">✕</button>
+      </div>
+
+      <div class="drawer-body" id="customer-drawer-body">
+        <!-- Rendered by customers.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CREATE RULE MODAL ==================== -->
+  <div class="modal-overlay" id="create-rule-modal">
+    <div class="modal-content" style="max-width: 540px; padding: 28px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-family: var(--font-heading); font-size: 18px; color: var(--text-main);">Create Custom Recovery Rule</h3>
+        <button class="btn btn-secondary btn-sm" id="btn-close-create-rule-modal">✕</button>
+      </div>
+
+      <form id="create-rule-form">
+        <div class="form-group">
+          <label class="form-label">Rule Name</label>
+          <input type="text" id="rule-name-input" class="form-control" placeholder="e.g. VIP Subscription Priority Recovery" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea id="rule-desc-input" class="form-control" rows="3" placeholder="Explain the condition and expected intervention..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Rule Category</label>
+          <select id="rule-type-select" class="form-control">
+            <option value="smart_retry">Smart Retry Optimization</option>
+            <option value="upi_optimization">UPI Timing & PSP Routing</option>
+            <option value="high_value">High-Value Payment Guard</option>
+            <option value="stopping_rule">Stopping Boundary Condition</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Intervention Action</label>
+          <select id="rule-action-select" class="form-control">
+            <option value="SMART_RETRY">SMART_RETRY (Immediate Idempotent Re-query)</option>
+            <option value="TIMED_RETRY">TIMED_RETRY (Off-Peak Gateway Window)</option>
+            <option value="PAYMENT_REMINDER">PAYMENT_REMINDER (WhatsApp / SMS 1-Click Link)</option>
+            <option value="ROUTE_SWITCH">ROUTE_SWITCH (Secondary Acquiring Rail)</option>
+            <option value="STOP">STOP (Hard Boundary Halt)</option>
+          </select>
+        </div>
+
+        <div style="margin-top: 24px; display: flex; justify-content: flex-end; gap: 12px;">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('create-rule-modal').classList.remove('active')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save & Activate Rule</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== RECOVERY REASONING POPUP MODAL ==================== -->
+  <div class="modal-overlay" id="recovery-reasoning-modal">
+    <div class="modal-content" style="max-width: 520px; padding: 26px; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-lg);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h3 style="font-family: var(--font-heading); font-size: 17px; color: var(--text-main); display: flex; align-items: center; gap: 8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--razorpay-blue)" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          AI Decision Reasoning
+        </h3>
+        <button class="btn btn-secondary btn-sm" id="btn-close-reasoning-modal">✕</button>
+      </div>
+
+      <div id="reasoning-modal-content">
+        <!-- Rendered by recovery_history.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/auth.js"></script>
+  <script src="/static/js/dashboard.js"></script>
+  <script src="/static/js/recovery_modal.js"></script>
+  <script src="/static/js/customers.js"></script>
+  <script src="/static/js/rules.js"></script>
+  <script src="/static/js/recovery_history.js"></script>
+  <script src="/static/js/analytics.js"></script>
+  <script src="/static/js/insights.js"></script>
+
+  <script>
+    // Guard against browser back-navigation restoring unauthenticated dashboard state
+    window.addEventListener('pageshow', function (event) {
+      if (event.persisted || (window.performance && window.performance.navigation && window.performance.navigation.type === 2)) {
+        fetch('/api/auth/me').then(function(r) { return r.json(); }).then(function(data) {
+          if (!data.authenticated) {
+            window.location.replace('/');
+          }
+        }).catch(function() {
+          window.location.replace('/');
+        });
+      }
+    });
+
+    // SPA View Switcher with Lazy Loading
+    const initializedViews = new Set(['dashboard']);
+
+    function ensureViewInitialized(viewName) {
+      if (initializedViews.has(viewName)) return;
+      initializedViews.add(viewName);
+      if (viewName === 'customers' && window.Customers) Customers.init();
+      else if (viewName === 'rules' && window.RecoveryRules) RecoveryRules.init();
+      else if (viewName === 'history' && window.RecoveryHistory) RecoveryHistory.init();
+      else if (viewName === 'trends' && window.Analytics) Analytics.init();
+      else if (viewName === 'insights' && window.AIInsights) AIInsights.init();
+    }
+
+    function switchView(viewName) {
+      const views = ['dashboard', 'customers', 'rules', 'history', 'trends', 'insights'];
+      const titles = {
+        'dashboard': 'Recovery Operations Dashboard',
+        'customers': 'Customer Recovery Accounts',
+        'rules': 'Recovery Rules & Guardrails',
+        'history': 'Recovery History & Explainability',
+        'trends': 'Numbers & Trends Analytics',
+        'insights': 'AI Revenue Recovery Analyst'
+      };
+
+      views.forEach(v => {
+        const viewEl = document.getElementById(`view-${v}`);
+        const navEl = document.getElementById(`nav-${v}`);
+        if (viewEl) viewEl.style.display = (v === viewName) ? 'block' : 'none';
+        if (navEl) {
+          if (v === viewName) navEl.classList.add('active');
+          else navEl.classList.remove('active');
+        }
+      });
+
+      const titleEl = document.getElementById('page-title-heading');
+      if (titleEl && titles[viewName]) {
+        titleEl.textContent = titles[viewName];
+      }
+
+      // Initialize on first access, or refresh if already initialized
+      if (!initializedViews.has(viewName)) {
+        ensureViewInitialized(viewName);
+      } else {
+        if (viewName === 'dashboard') {
+          Dashboard.loadStats();
+          Dashboard.loadImpact();
+        } else if (viewName === 'customers') {
+          Customers.loadCustomers();
+        } else if (viewName === 'rules') {
+          RecoveryRules.loadRules();
+        } else if (viewName === 'history') {
+          RecoveryHistory.loadHistory();
+        } else if (viewName === 'trends') {
+          Analytics.loadTrends();
+        } else if (viewName === 'insights') {
+          AIInsights.loadInsights();
+        }
+      }
+    }
+
+    // Fast App Initialization: Load Dashboard KPIs immediately, defer other views until clicked
+    document.addEventListener('DOMContentLoaded', () => {
+      Dashboard.init();
+      RecoveryModal.init();
+    });
+  </script>
+</body>
+</html>
